@@ -21,7 +21,3 @@ let g:vimwiki_list = [{
   \ 'syntax'  : 'markdown',
   \ 'ext'     : '.md'
 \ }]
-
-" keep selection after indenting
-vnoremap < <gv
-vnoremap > >gv
