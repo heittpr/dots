@@ -9,10 +9,12 @@ set showtabline=1
 " plugins
 call plug#begin(stdpath('data'))
 Plug 'vimwiki/vimwiki'
+Plug 'conornewton/vim-pandoc-markdown-preview'
 call plug#end()
 
 " vimwiki
-set concealcursor=nc
+" set concealcursor=nc
+let g:vimwiki_global_ext = 0
 set nocompatible
 filetype plugin on
 syntax on
@@ -21,3 +23,6 @@ let g:vimwiki_list = [{
   \ 'syntax'  : 'markdown',
   \ 'ext'     : '.md'
 \ }]
+
+" temporary fix for #11330
+autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
