@@ -1,0 +1,196 @@
+# mod
+set $mod Mod4
+floating_modifier $mod
+
+# font
+font pango:M+ 1m 8
+
+# start terminal
+bindsym $mod+Return exec alacritty --working-directory $(cwd)
+bindsym $mod+Shift+Return exec alacritty
+
+# exit sway
+bindsym $mod+Shift+e exec swaynag -t warning -m 'exit sway?' -b 'yes' 'swaymsg exit'
+
+# kill window
+bindsym $mod+Shift+q kill
+
+# wofi
+bindsym $mod+d exec wofi -S run
+
+# focus
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
+
+# move
+bindsym $mod+Shift+Left   move left
+bindsym $mod+Shift+Down   move down
+bindsym $mod+Shift+Up     move up
+bindsym $mod+Shift+Right  move right
+
+# split
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# fullscreen
+bindsym $mod+f fullscreen toggle
+
+# layout
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# tile / float
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# workspaces
+set $ws1  "1"
+set $ws2  "2"
+set $ws3  "3"
+set $ws4  "4"
+set $ws5  "5"
+set $ws6  "6"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# reload
+bindsym $mod+Shift+r reload
+
+# resize
+mode "resize" {
+  # fast
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # precise
+  bindsym Shift+Left resize shrink width 1 px or 1 ppt
+  bindsym Shift+Down resize grow height 1 px or 1 ppt
+  bindsym Shift+Up resize shrink height 1 px or 1 ppt
+  bindsym Shift+Right resize grow width 1 px or 1 ppt
+
+  # back to normal mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# load wal variables
+include $XDG_CACHE_HOME/wal/colors-sway
+
+### theme
+#colorclass             border    bg        text      indicator child_border
+client.focused          $color1   $color0   $color1   $color0   $color1
+client.unfocused        $color1   $color0   $color1   $color0   $color1
+client.focused_inactive $color1   $color0   $color1   $color0   $color1
+client.urgent           $color1   $color0   $color1   $color0   $color1
+
+# gaps
+gaps inner 10
+gaps outer 0
+smart_gaps on
+
+# no borders
+smart_borders on
+default_border pixel 0
+for_window [class="^.*"] border pixel 0
+
+# remove titlebar
+font pango:monospace 0
+titlebar_border_thickness 0   
+titlebar_padding 0
+
+# scratchpad
+bindsym $mod+shift+minus move scratchpad
+bindsym $mod+plus scratchpad show
+
+# output/wallpaper configuration
+# output * bg $wallpaper fill
+exec_always pkill oguri; exec oguri
+exec_always pkill kanshi; exec kanshi
+
+# keyboard layout
+input "*" xkb_layout br
+
+# waybar
+# bar {
+#   swaybar_command waybar
+# }
+exec_always pkill waybar; exec waybar
+
+# notification daemon
+exec mako
+
+# adjust color temperature
+exec_always pkill -9 gammastep; exec gammastep
+
+# pulseaudio controls
+bindsym XF86AudioRaiseVolume	  exec pulsemixer --change-volume +5
+bindsym Shift+F3               	exec pulsemixer --change-volume +5
+bindsym XF86AudioLowerVolume  	exec pulsemixer --change-volume -5
+bindsym Shift+F2               	exec pulsemixer --change-volume -5
+bindsym XF86AudioMute         	exec pulsemixer --toggle-mute
+bindsym Shift+F1               	exec pulsemixer --toggle-mute
+
+# media controls
+bindsym XF86AudioPlay   exec playerctl play
+bindsym XF86AudioPause  exec playerctl pause
+bindsym XF86AudioNext   exec playerctl next
+bindsym XF86AudioPrev   exec playerctl previous
+
+# brightness controls
+bindsym XF86MonBrightnessDown   exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp     exec brightnessctl set +5%
+
+# shortcuts
+bindsym Print               exec screenshot area    # take a screenshot with slurp
+bindsym Shift+Print         exec screenshot         # screenshot script
+bindsym $mod+Print          exec recorder           # screen recorder
+bindsym $mod+Shift+t        exec themeselector      # wal-based theme selector
+bindsym $mod+Shift+c        exec wl-clear           # clear clipboard
+bindsym XF86AudioMicMute    exec mute               # mute mic input
+
+# lock
+bindsym $mod+Shift+x exec lock
+exec swayidle -w timeout 600 lock
+
+# tray context menus
+exec traymenu
+
+# fix compatibility issues with java
+exec_always wmname compiz
+
+# inhibit swayidle on fullsecreen
+for_window [class="^.*"] inhibit_idle fullscreen
