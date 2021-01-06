@@ -1,1 +1,15 @@
-/home/heitor/.cache/wal/makoconfig
+# configuration
+max-visible=3
+font=M+\ 1m\ 8
+default-timeout=8000
+icons=0
+
+# geometry
+anchor=bottom-right
+padding=10
+margin=0
+
+# theme
+background-color=#0e1922
+border-size=0
+format=<b><span foreground='#4F5C61'>%s</span></b>\n%b
