@@ -1,0 +1,5 @@
+[output *]
+image={wallpaper}
+filter=nearest
+scaling-mode=fill
+anchor=center

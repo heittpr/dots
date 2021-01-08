@@ -1,0 +1,27 @@
+font=M+ 1m
+ignore-empty-password
+
+separator-color=00000000
+
+key-hl-color={color1}
+bs-hl-color={color1}
+
+text-color=ffffff
+text-clear-color=00000000
+text-ver-color=00000000
+text-wrong-color={color1}
+
+line-color=00000000
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+
+inside-color=00000000
+inside-clear-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+
+ring-color={color0}
+ring-clear-color={color0}
+ring-ver-color=00000000
+ring-wrong-color=00000000

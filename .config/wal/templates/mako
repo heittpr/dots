@@ -1,0 +1,15 @@
+# configuration
+max-visible=3
+font=M+\ 1m\ 8
+default-timeout=8000
+icons=0
+
+# geometry
+anchor=bottom-right
+padding=10
+margin=0
+
+# theme
+background-color={color0}
+border-size=0
+format=<b><span foreground='{color2}'>%s</span></b>\n%b
