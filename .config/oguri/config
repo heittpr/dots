@@ -1,0 +1,5 @@
+[output *]
+image=/home/heitor/pic/wallpapers/1041uuu/png/goose.png
+filter=nearest
+scaling-mode=fill
+anchor=center
