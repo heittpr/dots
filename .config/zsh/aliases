@@ -1,0 +1,13 @@
+alias dots='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
+
+hash -d pic=$HOME/pic
+hash -d doc=$HOME/doc
+hash -d git=$HOME/git
+
+hash -d config=$XDG_CONFIG_HOME
+hash -d cache=$XDG_CACHE_HOME
+hash -d data=$XDG_DATA_HOME
+
+hash -d local=$HOME/.local
+hash -d build=$HOME/.local/build
+hash -d bin=$HOME/.local/bin
