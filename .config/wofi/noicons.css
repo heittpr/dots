@@ -14,9 +14,9 @@ window, #input, #entry:selected {
   background-color: --wofi-color0;
 }
 
-#text 		      { color: --wofi-color2; }
-#text:selected 	{ color: --wofi-color1; }
-#input image 	  { color: --wofi-color1 }
+#text           { color: --wofi-color2; }
+#text:selected  { color: --wofi-color1; }
+#input image    { color: --wofi-color1 }
 
 /* hide icons */
 #input image {
