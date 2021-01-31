@@ -11,8 +11,6 @@ source $XDG_CONFIG_HOME/zsh/aliases
 autoload -U compinit && compinit
 _comp_options+=(globdots)
 
-# oh-my-zsh
-ZSH_THEME="lambda-gitster"
-plugins=(git zsh-completions)
-
-source ~/.local/share/oh-my-zsh/oh-my-zsh.sh
+# prompt
+setopt prompt_subst
+PROMPT='%B%F{1}λ%f  %~  %b'
