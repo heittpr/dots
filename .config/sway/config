@@ -138,8 +138,8 @@ bindsym $mod+plus scratchpad show
 
 # output/wallpaper configuration
 # output * bg $wallpaper fill
-exec_always pkill oguri; exec oguri
-exec_always pkill kanshi; exec kanshi
+exec_always 'pkill kanshi; exec kanshi'
+exec oguri 
 
 # keyboard layout
 input "*" xkb_layout br
