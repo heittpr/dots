@@ -120,7 +120,7 @@ client.urgent           $color1   $color0   $color1   $color0   $color1
 # gaps
 gaps inner 10
 gaps outer 0
-smart_gaps on
+# smart_gaps on
 
 # no borders
 smart_borders on
