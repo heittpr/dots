@@ -6,10 +6,24 @@ set softtabstop=0
 set shiftwidth=2
 set showtabline=1
 
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
 " plugins
 call plug#begin(stdpath('data'))
 Plug 'vimwiki/vimwiki'
 Plug 'conornewton/vim-pandoc-markdown-preview'
+Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc'
 call plug#end()
 
 " vimwiki
