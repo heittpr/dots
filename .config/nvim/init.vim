@@ -26,6 +26,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'vim-pandoc/vim-pandoc'
 call plug#end()
 
+" disable undescore highlighting
+syn match markdownError "\w\@<=\w\@="
+
 " vimwiki
 " set concealcursor=nc
 let g:vimwiki_global_ext = 0
