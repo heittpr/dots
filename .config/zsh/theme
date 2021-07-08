@@ -1,0 +1,23 @@
+# prompt
+setopt prompt_subst
+PROMPT='%B%F{1}λ%f  %~  %b'
+
+# ls
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
+alias ls='ls --color=auto'
+
+### autocompletion
+
+# git
+fpath=($ZDOTDIR/git $fpath)
+zstyle ':completion:*:*:git:*' script $ZDOTDIR/git/git-completion.bash
+
+autoload -U compinit
+# zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+setopt autocd

@@ -1,0 +1,2 @@
+PATH=$PATH$(find /home/heitor/doc/cefet/ic/bin -maxdepth 1 -type d -printf ":%p")
+export LD_LIBRARY_PATH="/home/heitor/doc/cefet/ic/bin/orca:$LD_LIBRARY_PATH"

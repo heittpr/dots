@@ -1,4 +1,9 @@
-alias dots='/usr/bin/git --git-dir=$HOME/git/dotfiles --work-tree=$HOME'
+alias dots="/usr/bin/git --git-dir=$HOME/git/dots --work-tree=$HOME"
+alias bin='/usr/bin/git --git-dir=$HOME/git/bin --work-tree=$HOME/.local/bin'
+
+alias xi="doas xbps-install"
+alias xr="doas xbps-remove"
+alias xq="xbps-query"
 
 hash -d pic=$HOME/pic
 hash -d doc=$HOME/doc
@@ -11,3 +16,6 @@ hash -d data=$XDG_DATA_HOME
 hash -d local=$HOME/.local
 hash -d build=$HOME/.local/build
 hash -d bin=$HOME/.local/bin
+
+hash -d cefet=$HOME/doc/cefet
+hash -d ic=$HOME/doc/cefet/ic

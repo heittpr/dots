@@ -1,0 +1,22 @@
+# spicetify
+# export SPICETIFY_INSTALL=$XDG_DATA_HOME/spicetify-cli
+# export PATH=$SPICETIFY_INSTALL:$PATH
+
+# node
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
+# java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java
+
+# less
+export LESSKEY=$XDG_CONFIG_HOME/less/lesskey
+export LESSHISTFILE=$XDG_CACHE_HOME/less/history
+
+# dialog
+export DIALOGRC=$XDG_CONFIG_HOME/dialog/dialogrc
+
+# pass
+export PASSWORD_STORE_DIR=$XDG_DATA_HOME/pass
+
+# gnupg
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
