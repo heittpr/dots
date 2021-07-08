@@ -1,5 +1,5 @@
 font=M+ 1m
-ignore-empty-password
+# ignore-empty-password
 
 separator-color=00000000
 

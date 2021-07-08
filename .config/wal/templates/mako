@@ -5,11 +5,12 @@ default-timeout=8000
 icons=0
 
 # geometry
-anchor=bottom-right
+anchor=top-right
 padding=10
-margin=0
+margin=5
 
 # theme
+border-color={color7}
 background-color={color0}
-border-size=0
+border-size=1
 format=<b><span foreground='{color2}'>%s</span></b>\n%b

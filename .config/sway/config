@@ -15,8 +15,9 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'exit sway?' -b 'yes' 'swaymsg e
 # kill window
 bindsym $mod+Shift+q kill
 
-# wofi
-bindsym $mod+d exec wofi -S run
+# wofi / wofile
+bindsym $mod+d        exec zsh -c 'wofi -S run'
+bindsym $mod+Shift+d  exec xdg-open $(wofile)
 
 # focus
 bindsym $mod+Left   focus left
@@ -150,11 +151,15 @@ input "*" xkb_layout br
 # }
 exec_always pkill waybar; exec waybar
 
+# pipewire / xdpw
+exec pipewire
+exec dbus-update-activation-environment WAYLAND_DISPLAY
+
 # notification daemon
 exec mako
 
 # adjust color temperature
-exec_always pkill -9 gammastep; exec gammastep
+exec_always pkill gammastep; exec gammastep
 
 # pulseaudio controls
 bindsym XF86AudioRaiseVolume	  exec pulsemixer --change-volume +5
@@ -182,8 +187,10 @@ bindsym $mod+Shift+t        exec themeselector      # wal-based theme selector
 bindsym $mod+Shift+c        exec wl-clear           # clear clipboard
 bindsym XF86AudioMicMute    exec mute               # mute mic input
 
-# lock
+# lock / logout
 bindsym $mod+Shift+x exec lock
+bindswitch --reload --locked lid:on exec lock
+bindsym $mod+Shift+l exec wlogout -p layer-shell
 exec swayidle -w timeout 600 lock
 
 # tray context menus
@@ -194,3 +201,9 @@ exec_always wmname compiz
 
 # inhibit swayidle on fullsecreen
 for_window [class="^.*"] inhibit_idle fullscreen
+
+# float windows with app id "float" 
+for_window [app_id="float"] floating enable
+
+# emoji everywhere
+bindsym $mod+colon exec emoji

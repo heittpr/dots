@@ -2,3 +2,5 @@ width=30%
 height=20%
 hide_scroll=true
 prompt=
+show_all=false
+term=alacritty

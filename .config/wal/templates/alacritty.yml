@@ -17,10 +17,12 @@ font:
 
   size: 11
 
+background_opacity: 1
+
 window:
   padding:
-    x: 15
-    y: 15
+    x: 20
+    y: 20
 
 colors:
   primary:
