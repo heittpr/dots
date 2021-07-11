@@ -113,10 +113,10 @@ include $XDG_CACHE_HOME/wal/colors-sway
 
 ### theme
 #colorclass             border    bg        text      indicator child_border
-client.focused          $color1   $color0   $color1   $color0   $color8
-client.focused_inactive $color1   $color0   $color1   $color0   $color8
+client.focused          $color1   $color0   $color1   $color0   $color1
+client.focused_inactive $color8   $color0   $color1   $color0   $color8
 client.unfocused        $color8   $color0   $color1   $color0   $color8
-client.urgent           $color3   $color0   $color1   $color0   $color8
+client.urgent           $color3   $color0   $color1   $color0   $color3
 
 # gaps
 gaps inner 10
