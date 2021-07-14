@@ -1,0 +1,34 @@
+@import "/home/heitor/.cache/wal/colors-waybar.css";
+
+* {
+	background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  outline: none;
+  font-family: "M+ 1m", "Font Awesome 5 Pro Regular";
+}
+
+window {
+	background-color: alpha(@background, 0);
+}
+
+.horizontal {
+  margin: 12em 25em;
+}
+
+button {
+  color: #FFFFFF;
+	background-color: @background;
+  border-radius: 5px;
+  box-shadow: 10px 10px 15px 2px rgba(0, 0, 0, 0.75);
+  margin: 20px;
+}
+
+button:focus, button:active, button:hover {
+  color: @color1;
+}
+
+label {
+  margin-bottom: 30px;
+}

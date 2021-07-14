@@ -1,0 +1,36 @@
+{
+  "label": "lock",
+  "action": "lock",
+  "text": " lock",
+  "keybind": "l"
+}
+{
+  "label": "hibernate",
+  "action": "doas /bin/ZZZ",
+  "text": " hibernate",
+  "keybind": "h"
+}
+{
+  "label": "logout",
+  "action": "swaymsg exit",
+  "text": " logout",
+  "keybind": "e"
+}
+{
+  "label": "shutdown",
+  "action": "doas /bin/poweroff",
+  "text": " shutdown",
+  "keybind": "s"
+}
+{
+  "label": "suspend",
+  "action": "doas /bin/zzz",
+  "text": " suspend",
+  "keybind": "u"
+}
+{
+  "label": "reboot",
+  "action": "doas /bin/reboot",
+  "text": " reboot",
+  "keybind": "r"
+}
