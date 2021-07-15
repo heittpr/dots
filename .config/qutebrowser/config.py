@@ -18,6 +18,13 @@ c.url.searchengines = {
 
 c.url.default_page= '/home/heitor/.config/qutebrowser/default.html'
 
+c.fonts.default_family = "M+ 1m"
+c.fonts.web.family.standard = "Noto Sans"
+c.fonts.web.family.sans_serif = "Noto Sans"
+c.fonts.web.family.serif = "Noto Serif"
+c.fonts.web.family.fantasy = "Impact"
+c.fonts.web.family.fixed = "Consolas"
+
 # c.qt.args += [
 #  'ignore-gpu-blacklist',
 #  'enable-gpu-rasterization',
