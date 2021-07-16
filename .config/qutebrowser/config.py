@@ -17,6 +17,7 @@ c.url.searchengines = {
 }
 
 c.url.default_page= '/home/heitor/.config/qutebrowser/default.html'
+c.url.start_pages = [c.url.default_page]
 
 c.fonts.default_family = "M+ 1m"
 c.fonts.web.family.standard = "Noto Sans"
