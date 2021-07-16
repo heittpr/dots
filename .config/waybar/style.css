@@ -1,0 +1,85 @@
+@import "/home/heitor/.cache/wal/colors-waybar.css";
+
+/* basic styling */
+* {
+  font-size: 12px;
+  font-family: "M+ 1m", "Font Awesome 5 Pro Regular";
+}
+
+#waybar, tooltip {
+  background: @background;
+  color: @foreground;
+}
+
+tooltip {
+  border-radius: 0;
+  border: 1px solid @foreground;
+}
+
+/* spacing between edge modules and window */
+window > box { margin: 0px 5px; }
+
+/* default module padding and margin */
+window > box box * {
+  margin: 0 5px;
+  padding: 0;
+}
+
+/* separator module */
+#custom-separator {
+  margin: 0;
+}
+
+/* modules with background colors */
+#custom-updates,
+#cpu,
+#temperature,
+#memory,
+#battery {
+  border-radius: 100px;
+  padding: 0 10px;
+  margin: 3px 2px;
+}
+
+#custom-updates { background-color: darker(@color4); }
+#cpu            { background-color: @color1; }
+#temperature    { background-color: @color1; }
+#memory         { background-color: @color2; }
+#battery        { background-color: @color3; }
+
+/* join cpu and temperature modules */
+/* join the two battery modules */
+#cpu, #battery.0 {
+  margin-right: 0;
+  padding-right: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#temperature, #battery.1 {
+  margin-left: 0;
+  padding-left: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* remove spacing from first button */
+#workspaces:first-child { margin-left: 0; }
+
+/* disable hover effect */
+#workspaces button {
+  border: none;
+  transition: none;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: @background;
+  border: @background;
+}
+
+/* button colors */
+#workspaces button          { color: white;   }
+#workspaces button.focused  { color: @color2; }
+#workspaces button.urgent   { color: @color3; }

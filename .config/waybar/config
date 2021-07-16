@@ -1,0 +1,97 @@
+// vim: set ft=json:
+
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["clock", "custom/separator", "custom/weather"],
+  "modules-right": ["pulseaudio", "network", "custom/updates", "cpu", "temperature", "memory", "battery#0", "battery#1"],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": ""
+    }
+  },
+  "clock": {
+    "format": "{: %a, %b %d |  %H:%M}",
+    "tooltip": true,
+    "tooltip-format": "<span size='larger' foreground='#CC7076'>{:%B %Y}</span>\n{calendar}"
+  },
+  "custom/separator": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/weather": {
+    "exec": "weather",
+    "max-length": 12,
+    "format": "{}",
+    "interval": 600,
+    "tooltip": false
+  },
+  "custom/updates": {
+    "exec": "xbps-install -Mun | grep update | wc -l",
+    "exec-if": "exit 0",
+    "on-click": "xupdate",
+    "format": " {}",
+    "interval": 3600,
+    "tooltip": false,
+    "signal": 10
+  },
+  "cpu": {
+    "format": " {usage}"
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+    "critical-threshold": 70,
+    "format-icons": ["", "", "", "", ""],
+    "format": "{icon} {temperatureC}",
+    "interval": 10
+  },
+  "memory": {
+    "format": " {}"
+  },
+  "battery#0": {
+    "bat": "BAT0",
+    "interval": 30,
+    "full-at": 79,
+    "format-icons": ["", "", "", "", ""],
+    "format": "{icon} {capacity}"
+  },
+  "battery#1": {
+    "bat": "BAT1",
+    "interval": 30,
+    "full-at": 84,
+    "format-icons": ["", "", "", "", ""],
+    "format": "{icon} {capacity}"
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ifname}",
+    "tooltip-format": " {ipaddr}\n {bandwidthDownBits}\n {bandwidthUpBits}"
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon} {volume:3}",
+    "format-muted": " ━━━━━━━ {volume:3}",
+    "format-icons": {
+      "default": [
+        " <span foreground='#CC7076'></span>━━━━━━━",
+        " <span foreground='#CC7076'>━</span>━━━━━━",
+        " <span foreground='#CC7076'>━━</span>━━━━━",
+        " <span foreground='#CC7076'>━━━</span>━━━━",
+        " <span foreground='#CC7076'>━━━━</span>━━━",
+        " <span foreground='#CC7076'>━━━━━</span>━━",
+        " <span foreground='#CC7076'>━━━━━━</span>━",
+        " <span foreground='#CC7076'>━━━━━━━</span>"
+      ]
+    }
+  }
+}
