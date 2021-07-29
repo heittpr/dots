@@ -5,7 +5,7 @@
   "position": "top",
   "modules-left": ["sway/workspaces"],
   "modules-center": ["clock", "custom/separator", "custom/weather"],
-  "modules-right": ["pulseaudio", "network", "custom/updates", "cpu", "temperature", "memory", "battery#0", "battery#1"],
+  "modules-right": ["tray", "pulseaudio", "network", "custom/updates", "cpu", "temperature", "memory", "battery#0", "battery#1"],
   "sway/workspaces": {
     "disable-scroll": true,
     "format": "{icon}",
@@ -17,6 +17,9 @@
       "5": "",
       "6": ""
     }
+  },
+  "tray": {
+    "icon-size": 15
   },
   "clock": {
     "format": "{: %a, %b %d |  %H:%M}",
