@@ -113,9 +113,9 @@ include $XDG_CACHE_HOME/wal/colors-sway
 
 ### theme
 #colorclass             border    bg        text      indicator child_border
-client.focused          $color1   $color0   $color1   $color0   $color1
-client.focused_inactive $color8   $color0   $color1   $color0   $color8
-client.unfocused        $color8   $color0   $color1   $color0   $color8
+client.focused          $color8   $color0   $color1   $color0   $color8
+client.focused_inactive $color1   $color0   $color1   $color0   $color1
+client.unfocused        $color1   $color0   $color1   $color0   $color1
 client.urgent           $color3   $color0   $color1   $color0   $color3
 
 # gaps
@@ -129,7 +129,7 @@ default_border pixel 2
 # for_window [class="^.*"] border pixel 0
 
 # remove titlebar
-font pango:monospace 0
+font pango:M+ 1m 0
 titlebar_border_thickness 0
 titlebar_padding 0
 
@@ -153,6 +153,7 @@ exec_always pkill waybar; exec waybar
 
 # pipewire / xdpw
 exec pipewire
+exec pipewire-pulse
 exec dbus-update-activation-environment WAYLAND_DISPLAY
 
 # notification daemon
