@@ -1,7 +1,15 @@
 alias dots="/usr/bin/git --git-dir=$HOME/git/dots --work-tree=$HOME"
 alias bin='/usr/bin/git --git-dir=$HOME/git/bin --work-tree=$HOME/.local/bin'
 
-alias xi="doas xbps-install"
+xi() {
+  if [[ "$PWD" = "$HOME/.local/build/void-packages"* ]]; then
+    echo $@
+    /bin/xi $@
+  else
+    doas xbps-install $@
+  fi
+}
+
 alias xr="doas xbps-remove"
 alias xq="xbps-query"
 
