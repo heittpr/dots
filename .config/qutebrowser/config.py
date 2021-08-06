@@ -6,6 +6,7 @@ import json
 
 c.downloads.location.directory = '/home/heitor/'
 c.content.pdfjs = True
+c.content.javascript.can_access_clipboard = True
 c.content.notifications.enabled = False
 c.editor.command = ['alacritty', '--class', 'float', '-e', 'nvim', '{file}']
 
@@ -32,6 +33,8 @@ c.fonts.web.family.fixed = "Consolas"
 #  'enable-native-gpu-memory-buffers',
 #  'num-raster-threads=4'
 # ]
+
+c.content.blocking.method = 'both'
 
 ### shortcuts
 
