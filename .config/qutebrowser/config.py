@@ -27,6 +27,8 @@ c.fonts.web.family.serif = "Noto Serif"
 c.fonts.web.family.fantasy = "Impact"
 c.fonts.web.family.fixed = "Consolas"
 
+c.qt.force_software_rendering = "qt-quick"
+
 # c.qt.args += [
 #  'ignore-gpu-blacklist',
 #  'enable-gpu-rasterization',
