@@ -17,7 +17,7 @@ mason_lspconfig.setup_handlers {
       capabilities = capabilities,
       init_options = {
         -- fallbackFlags = { "-std=c++17" }
-        fallbackFlags = { "-Wno-c++17-extensions", "-Wno-c++17-compat" }
+        fallbackFlags = { "-Wno-c++17-extensions", "-Wno-c++17-compat", "-DLOCAL" }
       }
     }
   end
