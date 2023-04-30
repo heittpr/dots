@@ -7,6 +7,10 @@ export XDG_DOWNLOAD_DIR=$HOME
 # add .local/bin to path
 export PATH=$HOME/.local/bin:$PATH
 
+# cp
+export PATH=/home/heitor/git/cp/bin:$PATH
+export MAKEFILES=/home/heitor/git/cp/makefile
+
 # wayland stuff
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
