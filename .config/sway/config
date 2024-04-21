@@ -1,13 +1,9 @@
-# mod
 set $mod Mod4
 floating_modifier $mod
 
-# font
-font pango:M+ 1m 8
-
 # start terminal
-bindsym $mod+Return exec alacritty --working-directory $(cwd)
-bindsym $mod+Shift+Return exec alacritty
+bindsym $mod+Return exec foot -D $(cwd)
+bindsym $mod+Shift+Return exec foot
 
 # exit sway
 bindsym $mod+Shift+e exec swaynag -t warning -m 'exit sway?' -b 'yes' 'swaymsg exit'
@@ -15,15 +11,20 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'exit sway?' -b 'yes' 'swaymsg e
 # kill window
 bindsym $mod+Shift+q kill
 
-# wofi / wofile
-bindsym $mod+d        exec zsh -c 'wofi -S run'
-bindsym $mod+Shift+d  exec xdg-open $(wofile)
+# rofi
+bindsym $mod+d        exec rofi -show run
+bindsym $mod+c	      exec rofi -show calc -modi calc -no-show-match -no-sort
 
 # focus
 bindsym $mod+Left   focus left
 bindsym $mod+Down   focus down
 bindsym $mod+Up     focus up
 bindsym $mod+Right  focus right
+
+#bindsym $mod+h   focus left
+#bindsym $mod+j   focus down
+#bindsym $mod+k     focus up
+#bindsym $mod+l  focus right
 
 # move
 bindsym $mod+Shift+Left   move left
@@ -47,41 +48,29 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-# workspaces
-set $ws1  "1"
-set $ws2  "2"
-set $ws3  "3"
-set $ws4  "4"
-set $ws5  "5"
-set $ws6  "6"
-set $ws7  "7"
-set $ws8  "8"
-set $ws9  "9"
-set $ws10 "10"
-
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # reload
 bindsym $mod+Shift+r reload
@@ -105,65 +94,102 @@ mode "resize" {
   bindsym Escape mode "default"
   bindsym $mod+r mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
-# load wal variables
+# mouse mode
+mode "mouse" {
+  # fast
+  bindsym Left seat - cursor move -10 0
+  bindsym Left+Up seat - cursor move -10 -10
+  bindsym Up seat - cursor move 0 -10
+  bindsym Up+Right seat - cursor move 10 -10
+  bindsym Right seat - cursor move 10 0
+  bindsym Right+Down seat - cursor move 10 10
+  bindsym Down seat - cursor move 0 10
+  bindsym Down+Left seat - cursor move -10 10
+
+  # precise
+  bindsym Shift+Left seat - cursor move -1 0
+  bindsym Shift+Left+Up seat - cursor move -1 -1
+  bindsym Shift+Up seat - cursor move 0 -1
+  bindsym Shift+Up+Right seat - cursor move 1 -1
+  bindsym Shift+Right seat - cursor move 1 0
+  bindsym Shift+Right+Down seat - cursor move 1 1
+  bindsym Shift+Down seat - cursor move 0 1
+  bindsym Shift+Down+Left seat - cursor move -1 1
+
+  # press
+  bindsym Return seat - cursor press button1, seat - cursor release button1
+  
+  # back to normal mode
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+bindsym $mod+m mode "mouse"
+
+# wal colors
 include $XDG_CACHE_HOME/wal/colors-sway
 
-### theme
 #colorclass             border    bg        text      indicator child_border
-client.focused          $color8   $color0   $color1   $color0   $color8
-client.focused_inactive $color1   $color0   $color1   $color0   $color1
-client.unfocused        $color1   $color0   $color1   $color0   $color1
-client.urgent           $color3   $color0   $color1   $color0   $color3
+client.focused          $color0   $color0   $color1   $color2   $color1
+client.focused_inactive $color0   $color0   $color1   $color2   $color8
+client.unfocused        $color0   $color0   $color8   $color2   $color8
+client.urgent           $color0   $color3   $color3   $color2   $color3
 
 # gaps
-gaps inner 10
+gaps inner 5
 gaps outer 0
-# smart_gaps on
+smart_gaps on
 
 # borders
 smart_borders on
 default_border pixel 2
-# for_window [class="^.*"] border pixel 0
 
-# remove titlebar
-font pango:M+ 1m 0
+# titlebar
+font pango:M+ 1m 9
+title_align center
 titlebar_border_thickness 0
-titlebar_padding 0
+titlebar_padding 7 5
 
 # scratchpad
 bindsym $mod+shift+minus move scratchpad
 bindsym $mod+plus scratchpad show
 
 # output/wallpaper configuration
-# output * bg $wallpaper fill
-exec_always 'pkill kanshi; exec kanshi'
-exec oguri 
+output * bg $wallpaper fill
+exec_always pkill kanshi; exec kanshi
+# exec_always sleep 3; pkill kanshi; exec kanshi
+# exec oguri
+
+# power notifications
+exec poweralertd
 
 # keyboard layout
-input "*" xkb_layout br
+input type:keyboard xkb_layout br
+
+# touchpad setup
+input type:touchpad tap enabled
 
 # waybar
-# bar {
-#   swaybar_command waybar
-# }
-exec_always pkill waybar; exec waybar
+bar {
+  swaybar_command waybar
+}
 
 # pipewire / xdpw
+# exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment DISPLAY XAUTHORITY SWAYSOCK I3SOCK WAYLAND_DISPLAY
+exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec pipewire
 exec pipewire-pulse
-exec dbus-update-activation-environment WAYLAND_DISPLAY
 
 # notification daemon
 exec mako
 
 # adjust color temperature
-exec_always pkill gammastep; exec gammastep
+exec wlsunset -l -19.9 -L -43.9 -t 4500 -T 6000 -g 0.9
 
 # pulseaudio controls
-bindsym XF86AudioRaiseVolume	  exec pulsemixer --change-volume +5
+bindsym XF86AudioRaiseVolume	exec pulsemixer --change-volume +5
 bindsym Shift+F3               	exec pulsemixer --change-volume +5
 bindsym XF86AudioLowerVolume  	exec pulsemixer --change-volume -5
 bindsym Shift+F2               	exec pulsemixer --change-volume -5
@@ -177,12 +203,15 @@ bindsym XF86AudioNext   exec playerctl next
 bindsym XF86AudioPrev   exec playerctl previous
 
 # brightness controls
-bindsym XF86MonBrightnessDown   exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp     exec brightnessctl set +5%
+bindsym Shift+XF86MonBrightnessDown   exec brightnessctl set 1
+bindsym XF86MonBrightnessDown	      exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp	      exec brightnessctl set +5%
 
-# shortcuts
-bindsym Print               exec screenshot area    # take a screenshot with slurp
-bindsym Shift+Print         exec screenshot         # screenshot script
+# script shortcuts
+bindsym Print		    exec grimshot --notify savecopy area /home/heitor/pic/screenshot.png
+bindsym Shift+Print	    exec grimshot --notify savecopy anything /home/heitor/pic/screenshot.png
+bindsym $mod+p              exec colorpicker        # colorpicker
+bindsym $mod+q              exec zbarscan           # qr/bar code scanner
 bindsym $mod+Print          exec recorder           # screen recorder
 bindsym $mod+Shift+t        exec themeselector      # wal-based theme selector
 bindsym $mod+Shift+c        exec wl-clear           # clear clipboard
@@ -190,7 +219,7 @@ bindsym XF86AudioMicMute    exec mute               # mute mic input
 
 # lock / logout
 bindsym $mod+Shift+x exec lock
-bindswitch --reload --locked lid:on exec lock
+bindswitch --locked lid:on exec lock
 bindsym $mod+Shift+l exec wlogout -p layer-shell
 exec swayidle -w timeout 600 lock
 
@@ -208,3 +237,8 @@ for_window [app_id="float"] floating enable
 
 # emoji everywhere
 bindsym $mod+colon exec emoji
+
+# spoiler window
+for_window [app_id="spoiler"] floating enable
+for_window [app_id="spoiler"] border pixel 0
+bindsym $mod+Shift+s exec spoiler
