@@ -4,13 +4,17 @@ import os
 ### basic
 
 c.downloads.location.directory = '/home/heitor/'
-c.content.pdfjs = True
-c.content.javascript.can_access_clipboard = True
+c.downloads.remove_finished = 5 * 1000
+#  c.content.pdfjs = True
+c.content.javascript.clipboard = 'access-paste'
 c.content.notifications.enabled = False
-c.content.blocking.method = 'both'
 c.editor.command = ['foot', '-e', 'nvim', '{file}']
 c.content.autoplay = False
 c.content.geolocation = False
+
+# adblocking
+c.content.blocking.method = 'both'
+c.content.blocking.adblock.lists += ["https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt"]
 
 c.url.default_page= '/home/heitor/.config/qutebrowser/default.html'
 c.url.start_pages = [c.url.default_page]
@@ -25,6 +29,8 @@ c.url.searchengines = {
   'pg': 'http://wcipeg.com/wiki/index.php?search={}',
   'mw': 'https://mathworld.wolfram.com/search/?query={}',
   'wa': 'https://www.wolframalpha.com/input/?i={}',
+  'wfa': 'https://wolfreealpha.gitlab.io/input?i={}',
+  'pw': 'https://proofwiki.org/w/index.php?search={}',
   'libgen': 'https://libgen.is/search.php?req={}',
   'sci': 'https://sci-hub.ru/{}',
   'oeis': 'https://oeis.org/search?q={}',
@@ -54,8 +60,8 @@ c.colors.webpage.preferred_color_scheme = 'dark'
 
 ### shortcuts / aliases
 
-config.bind(',M', 'hint links spawn mpv {hint-url}')
-config.bind(',m', 'spawn mpv {url}')
+config.bind(',M', 'hint links spawn -d mpv {hint-url}')
+config.bind(',m', 'spawn -d mpv {url}')
 config.bind('ab', 'config-cycle -p content.blocking.enabled')
 config.bind('xs', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
@@ -64,6 +70,9 @@ config.bind('xx', 'config-cycle tabs.show always never;; config-cycle statusbar.
 # bypass paywalls
 c.aliases['12ft'] = "open https://12ft.io/proxy?q={url}"
 c.aliases['cache'] = "open https://www.google.com/search?q=cache:{url}"
+
+# wayback machine alias
+c.aliases['wayback'] = "open https://web.archive.org/web/*/{url}"
 
 ### password manager
 
@@ -128,11 +137,23 @@ c.tabs.padding = c.statusbar.padding = {
   'left'  : 5,
 }
 
-# misc
+### misc
+
+# thanks google
+# with config.pattern('*.google.com/*') as p:
+#   p.content.headers.user_agent = "Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+
+# allow cf notifications
+with config.pattern('*.codeforces.com/*') as p:
+    p.content.notifications.enabled = True
+
+# passthrough mode on cf submissions
+with config.pattern('*.codeforces.com/*/submit') as p:
+    p.input.mode_override = "passthrough"
 
 # force edge user agent on bing (thanks microsoft)
-with config.pattern('*://*.bing.com/*') as p:
-    p.content.headers.user_agent = "Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
+# with config.pattern('*.bing.com/*') as p:
+#    p.content.headers.user_agent = "Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
 
 # load autoconfig.yml
 config.load_autoconfig()
